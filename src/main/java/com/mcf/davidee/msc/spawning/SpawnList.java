@@ -76,7 +76,7 @@ public class SpawnList {
             case ambient:
                 return a;
             default:
-                return null;
+                return m; // TODO: Make fully dynamically
         }
     }
 

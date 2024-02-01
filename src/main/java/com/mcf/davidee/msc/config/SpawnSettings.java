@@ -27,9 +27,11 @@ public class SpawnSettings {
 
     public SpawnSettings(File folder) {
         file = new File(folder, "Settings.properties");
-        defaultCaps = new int[] { EnumCreatureType.monster.getMaxNumberOfCreature(),
-            EnumCreatureType.creature.getMaxNumberOfCreature(), EnumCreatureType.ambient.getMaxNumberOfCreature(),
-            EnumCreatureType.waterCreature.getMaxNumberOfCreature() };
+        EnumCreatureType[] allTypes = EnumCreatureType.values();
+        defaultCaps = new int[allTypes.length];
+        for (int i = 0; i < allTypes.length; i++) {
+            defaultCaps[i] = allTypes[i].getMaxNumberOfCreature();
+        }
         spawnCaps = Arrays.copyOf(defaultCaps, defaultCaps.length);
         creatureFreq = 400;
         canEdit = true;
